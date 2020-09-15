@@ -1,4 +1,4 @@
-Title: 180864-conjuntos.fs
+Title: 170302-conjuntos.fs
 Programming Language: F#
 Authors: Edna Paola Castillo Jara 170302
 Subject: Theory of Computation
