@@ -1,4 +1,4 @@
-﻿// 180864-conjuntos.fs
+﻿// 170302-conjuntos.fs
 // Programming language: F#
 
 (* Student: Edna Paola Castillo Jara 170302
