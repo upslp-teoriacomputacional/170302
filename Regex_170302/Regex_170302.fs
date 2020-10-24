@@ -1,4 +1,4 @@
-﻿// 170302-afd.fs
+﻿// 170302-regex.fs
 // Programming language: F#
 
 (* Student: Edna Paola Castillo Jara 170302
