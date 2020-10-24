@@ -1,4 +1,4 @@
-Title: 170302-conjuntos.fs Programming Language: F\# Authors: Edna Paola
+Title: 170302-regexs.fs Programming Language: F\# Authors: Edna Paola
 Castillo Jara 170302 Subject: Theory of Computation Professor: Juan
 Carlos Gónzalez Ibarra Universidad Politecnica de San Luis Potosi
 
