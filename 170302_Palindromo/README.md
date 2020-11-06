@@ -1,6 +1,10 @@
-Title: 170302-conjuntos.fs Programming Language: F\# Authors: Edna Paola
-Castillo Jara 170302 Subject: Theory of Computation Professor: Juan
-Carlos Gónzalez Ibarra Universidad Politecnica de San Luis Potosi
+Title: 170302-palindromo.fs 
+Programming Language: F# 
+Authors: Edna Paola
+Castillo Jara 170302 
+Subject: Theory of Computation 
+Professor: Juan Carlos Gónzalez Ibarra 
+Universidad Politecnica de San Luis Potosi
 
 To begin with: Be sure to install Visual Studio, in order to be able to
 install it in your PC, you must be a Windows OS user, since Visual
@@ -12,82 +16,34 @@ licenses and permissions. You must have a Microsoft account to log in,
 on the contrary, you can register at the moment. Once you are done, you
 can open the file.
 
-Deterministic Finite Automaton (DFA) In DFA, for each input symbol, one
-can determine the state to which the machine will move. Hence, it is
-called Deterministic Automaton. As it has a finite number of states, the
-machine is called Deterministic Finite Machine or Deterministic Finite
-Automaton.
+A palindrome is a word or phrase that reads the same in one sense as in another. 
+If it is numbers instead of letters, it is called capicúa . Typically, palindromic 
+phrases suffer in meaning the longer they are. In this case the phrase is "anitalavalatina" as
+showed below.
 
 Code section:
 
-// Coding begins here open System open System.Text.RegularExpressions //
-Library needed to use Regex class
+// CODIGN BEGINS HERE
 
-let mutable symbol = "" // Mutable variables indicate their value can´t
-be modify with the "=" symbol, but with the "\<-" operator let mutable
-final = ""
-
-let caracter (character) : int = // The "int" indicates the function
-will return an ineteger value
-
-    symbol <- ""    // We declare the variables an use de "<-" operator
-    final <- ""
-    let digit = "[0-9]"
-    let operators = "(\+|\-|\*|\/)"
-
-    // Evaluate the string in order to know if the character is a digit, an operator, or none of them.
-    if Regex.IsMatch(character, digit) then // The Regex class is used to evaluate and compare the input
-        symbol <- "Digit"
-        0 
-
-    elif Regex.IsMatch(character, operators) then
-        symbol <- "Operator"
-        1 
-
-    elif character.Equals(final) then 
-        2
-
-    else 
-        printfn "The input is incorrect" 
-        4
+open System
+   
+    [<EntryPoint>]
+    let main argv =
+        let palindrome = "anitalavalatina".ToCharArray()  // Define the palindrome as an array containing "anitalavalatina"        
+        let AuxArray = Array.zeroCreate ((palindrome.Length/2)+1) // To create an array in order to add every character of palindrome array. palindrome.Length/2)+1 represents the "v" in the string
+        let mutable aux = 0     // Auxiliary variable to increment in the for loop, declared as mutable in order to be able to change its value as needed
+    
+        for i=0 to (palindrome.Length/2) do   //loop that adds elements in auxiliary "AuxArray" but only half elements of palindrome variable "(palindrome.Length/2)"
+            Array.set AuxArray i (palindrome.[i])    //Array.set sets an element to a specified value. Sets value i in "palindrome" to position i in "AuxArray"
+            printfn "%A" AuxArray.[0..aux]    // Prints the array in the form "anitalav"
+            aux <- aux+1
+    
+         // Now, with the next loop we print the array in the form "anitalav" backwards
+        aux <- aux-2    // To reset its value and avoid printing the array two extra times
+        for i=0 to (palindrome.Length/2)-1 do // We add "-1" in order to decrement in the loop and print the array backwards
+            printfn "%A" AuxArray.[0..aux]  // This should give us an output like "anitala"
+            aux <- aux-1 // Since "aux" is mutable we use "->" to change its value according to the loop to get the wished output
         
+        0 // return an integer exit code
 
-let contenido (nextState, character, symbol,state) = // This function
-receives variables & prints them. printfn "|\t    %i \t|\t    %c
-\t|\t   %s \t|\t %i \t\t|" nextState character symbol state
-
-[<EntryPoint>] // Now that the functions are defined we can continue
-with the rest of the code let main argv =
-
-//VARIABLES let table = [[1; 4; 4] ; [4; 2; 4] ; [3; 4; 4] ; [4; 4; 5]]
-// This variable corresponds to the transitioin table let mutable state
-= 0 // Machine state let mutable c = 0 // Auxiliar variable for the
-transition table
-
-printfn "Type a string or expression to evaluate" let cadena =
-Console.ReadLine() // Allows the user input printfn ""
-
-for character in cadena do // The loop will evaluate every character in
-the entered string let mutable nextState = state c \<- caracter (string
-character)
-
-         printfn "+-----------------------+-----------------------+-----------------------+-----------------------+"
-         printfn "|\tCurrent State\t|\tCharacter\t|\tSymbol   \t|\tNext State\t|"
-        if c < 4  then 
-            state <- table.[state].[c]
-            if state = 4 then   // The table will be shown if the input is valid
-                 printfn "|\t    %i    \t|\t    %c    \t|\t   %s  \t|\t %i   \t\t|" nextState character symbol state
-                 printfn "+-----------------------+-----------------------+-----------------------+-----------------------+"
-            
-        contenido(nextState, character, symbol, state)  // Prints the function with the table content
-
-        if state <> 3 then 
-                 printfn "\n\t\t\t\t\tUNVALID INPUT"
-        if state = 3 && c < 4 then
-                 printfn "|\t    %i    \t|\t          \t|\tEnd of String\t|\t  \t \t|" state
-                 printfn "\n\t\t\t\t\tVALID INPUT"
-            
-
-0 // return an integer exit code
-
-//CODING ENDS HERE
+// CODING ENDS HERE
