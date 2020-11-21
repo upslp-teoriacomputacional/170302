@@ -1,4 +1,8 @@
-#
+#Edna Paola Castillo Jara
+#Teoría computacional
+#vdate.sh
+
+
 BEGIN{
 units="zero one two three four five six seven eight nine"
 double=\
