@@ -1,4 +1,4 @@
-Title: 170302-conjuntos.fs Programming Language: F\# Authors: Edna Paola
+Title: TuringMachine.fs Programming Language: F\# Authors: Edna Paola
 Castillo Jara 170302 Subject: Theory of Computation Professor: Juan
 Carlos Gónzalez Ibarra Universidad Politecnica de San Luis Potosi
 
@@ -11,6 +11,40 @@ community 2019 package so it would be easier to acces when it comes to
 licenses and permissions. You must have a Microsoft account to log in,
 on the contrary, you can register at the moment. Once you are done, you
 can open the file.
+
+Q = Es un conjunto de estados
+    Σ = Alfabeto conjunto de caracteres (codigo utf-8 ="\u03A3")	
+    Γ = Simbolos de la cinta
+    s = Estado inicial sϵQ
+    δ= Reglas nde transicion (Codigo utf-8 = "\u03B4")
+    QxΣ->Q Reglas de transicion
+    bϵΓ = es un simbolo denominado blanco, que se puede repetir 
+          infinitamente en toda la cinta 
+    F⊆Q Estado finales o de aceptacion
+    
+    Q = {s,q1}
+    Σ = {a}	
+    Γ = {a,b}
+    s = Estado inicial q0ϵQ
+    δ= Reglas de transicion 
+    Reglas de transicion
+    Q x Σ -> Q
+    ((q0,a)->q1*)
+    (estado, valor) -> nuevo estado, nuevo valor, dirección)
+    (s,a)->q1,b,right
+    (q1,b)->--Valido--
+    "si estamos en el estado s leyendo la posición q1, donde hay 
+    escrito el símbolo 'a', entonces este símbolo debe ser reemplazado 
+    por el símbolo 'b', y pasar a leer la celda siguiente, a la derecha".
+    F⊆Q = {q1}
+    
+    Estructura gafica es un grafo dirigido que se conecta en los vertices 
+    con:
+        (lee el cabezal/
+        símbolo que escribirá el cabezal, 
+        movimiento del cabezal.)
+        (s,a)->q1,b,right
+        ('a',b,right)
 
 // CODING BEGINS HERE open System open System.Text.RegularExpressions //
 Library needed to use Regex class
